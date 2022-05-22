@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToArtist(id: number) {
-    this.router.navigateByUrl(`/artist-name/${id}`)
+    this.router.navigateByUrl(`/artist/${id}`)
   }
 
 }

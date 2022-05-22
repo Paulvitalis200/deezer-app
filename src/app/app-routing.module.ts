@@ -10,7 +10,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'artist-name/:id',
+    path: 'artist/:id',
     component: ArtistComponent
   }
 ];
