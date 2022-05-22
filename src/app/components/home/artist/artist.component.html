@@ -1,0 +1,57 @@
+<div class="main">
+    <div class="sub-main">
+
+
+        <button mat-flat-button class="back-btn" (click)="goBack()">Back</button>
+        <!-- <div class="body"> -->
+        <div class="top">
+            <mat-grid-list [cols]="isMobile ? 1 : 4" [rowHeight]="isMobile ? '1:1' : (isTablet ? '2:1' : '5:6')"
+                gutterSize="1rem">
+                <mat-grid-tile [colspan]="isMobile ? 1: 3" class="main-tile">
+                    <div *ngIf="!loading">
+                        <img [src]="artist?.picture_big" class="profile-pic" />
+                        <div class="text-section">
+                            <p class="artist-name">{{artist?.name}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="loading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+
+
+                </mat-grid-tile>
+                <mat-grid-tile colspan="1" class="top-tracks" *ngIf="!tracksLoading">
+                    <div *ngIf="!tracksLoading">
+                        <h2 class="top-track-title">Top Tracks</h2>
+                        <ul *ngFor="let track of topTracks; index as i">
+                            <li>{{i+1}}. {{track.title}}</li>
+                        </ul>
+                    </div>
+                    <div *ngIf="tracksLoading">
+                        <mat-spinner></mat-spinner>
+                    </div>
+
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div class="bottom-section">
+            <h2 class="album-title">Albums</h2>
+            <mat-grid-list class='grid-section' [cols]="isMobile ? 1 : ( isTablet ? 3 : 5)"
+                [rowHeight]="isMobile ? '2:1' : (isTablet ? '2:1' : '5:6')" gutterSize="2rem"
+                *ngIf="albumsList.length && !albumsLoading">
+                <mat-grid-tile *ngFor="let album of albumsList">
+                    <img [src]="album.cover_medium" />
+                    <!-- <h2 class="subtitle-test">My Innovations</h2> -->
+                    <div class="album-section">
+                        <p class="artist-name">{{album.title}}</p>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+            <div *ngIf="albumsLoading">
+                <mat-spinner></mat-spinner>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+</div>

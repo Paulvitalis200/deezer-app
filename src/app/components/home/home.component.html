@@ -1,0 +1,48 @@
+<div class="main">
+    <!-- <mat-form-field appearance="fill" class="search-input"> -->
+    <div class="search-bar">
+        <mat-form-field class="search-input">
+            <fa-icon [icon]="['fas', 'search']" style="width: 20px; font-size: 15px; margin-right: 16px">
+            </fa-icon>
+            <input matInput (input)="applyFilter($event)">
+        </mat-form-field>
+    </div>
+    <div class="icon-div" *ngIf="!artistList.length && !loading && filterLength === 0">
+
+        <fa-icon [icon]="['fas', 'music']" style="font-size: 10em; color: white">
+        </fa-icon>
+        <p class="search-text">
+            Search for an artist
+        </p>
+    </div>
+    <div class="icon-div" *ngIf="totalResults === 0 && !loading && artistsFound">
+
+        <fa-icon [icon]="['fas', 'face-frown']" style="font-size: 10em; color: white">
+        </fa-icon>
+        <p class="search-text">
+            No artists found
+        </p>
+    </div>
+
+    <div *ngIf="loading" class="spinner-div">
+        <mat-spinner></mat-spinner>
+        <p class="load-text">Loading artists</p>
+    </div>
+    <mat-grid-list class='grid-section' [cols]="isMobile ? 1 : ( isTablet ? 3 : 5)"
+        [rowHeight]="isMobile ? '2:1' : (isTablet ? '2:1' : '5:6')" gutterSize="2rem"
+        *ngIf="artistList.length && !loading">
+        <mat-grid-tile *ngFor="let art of artistList" (click)="goToArtist(art.artist.id)">
+            <mat-card class="artist-div">
+                <mat-card-content>
+                    <img [src]="art.artist.picture_medium" />
+                    <!-- <h2 class="subtitle-test">My Innovations</h2> -->
+                    <div class="text-section">
+                        <p class="artist-name">{{art.artist.name}}</p>
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+
+    </mat-grid-list>
+</div>
