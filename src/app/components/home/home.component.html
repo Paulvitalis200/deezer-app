@@ -1,3 +1,13 @@
 <div class="main">
+    <!-- <mat-form-field appearance="fill" class="search-input"> -->
+    <div class="search-bar">
+        <mat-form-field class="search-input">
+            <fa-icon [icon]="['fas', 'search']" style="width: 20px; font-size: 15px; margin-right: 16px">
+            </fa-icon>
+            <input matInput (input)="applyFilter($event)">
+        </mat-form-field>
+    </div>
+
+    <!-- </mat-form-field> -->
 
 </div>
