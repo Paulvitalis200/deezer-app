@@ -13,7 +13,19 @@ export class ArtistsService {
     return this.http.get(`${environment.apiBaseUrl}/search?q=artist:"${artistName}"`)
   }
 
-  getArtist(id: number) {
+  getArtist(id: string) {
     return this.http.get(`${environment.apiBaseUrl}/artist/${id}`)
+  }
+
+  getArtistTopTracks(id: string) {
+    return this.http.get(`${environment.apiBaseUrl}/artist/${id}/top`)
+  }
+
+  getArtistFans(id: string) {
+    return this.http.get(`${environment.apiBaseUrl}/artist/${id}/fans`)
+  }
+
+  getArtistAlbums(id: string) {
+    return this.http.get(`${environment.apiBaseUrl}/artist/${id}/albums`)
   }
 }

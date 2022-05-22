@@ -19,7 +19,10 @@ export class HomeComponent implements OnInit {
   artistsFound: boolean = false;
   totalResults!: number;
   filterLength: number = 0;
-  constructor(private artistsService: ArtistsService, breakpointObserver: BreakpointObserver, private router: Router) {
+  constructor(private artistsService: ArtistsService,
+    breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {
     breakpointObserver.observe([Breakpoints.Handset]).subscribe((result) => {
       this.isMobile = result.matches;
     });
@@ -29,34 +32,28 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getArtists()
-    // console.log("ARTIOST: ", this.artistList)
-    console.log("TOTAL: ", this.totalResults)
   }
 
   getArtists() {
     this.loading = true
     this.artistsFound = false
     this.artistsService.getArtists(this.artist).subscribe((res: any) => {
-      console.log("RES: ", res)
       this.loading = false
-      let unfilteredData = res.data
-      let uniqueChars = unfilteredData.filter((artist: any, index: any) => {
-        return unfilteredData.indexOf(artist.artist.name.toLowerCase()) === index;
-      });
-      console.log("UNIQUE: ", uniqueChars)
-      this.artistList = res.data
-      // this.artistList = unfilteredData.filter((artist: any) => artist.artist.name.toLowerCase() === this.artist)
-      // unfilteredData.findIndex((artist))
+      let unfiltered = res.data
+      let check: any = {};
+      let newArtist: any = [];
+      unfiltered.map((album: any) => {
+        if (!check[album['artist']['name']]) {
+          check[album['artist']['name']] = true;
+          newArtist.push(album);
+        }
+      })
+      this.artistList = newArtist;
       this.totalResults = res.total
-      // if (res.total === 0) {
-      //   this.totalResults
-      // }
-      console.log("TOTAL: ", this.totalResults)
       this.artistsFound = true
     },
-      (err) => {
-        console.log("Error: ", err)
+      (_err) => {
+
       })
   }
 
@@ -65,9 +62,6 @@ export class HomeComponent implements OnInit {
     this.filterLength = filter.length
     this.artist = filter
     this.getArtists()
-
-    console.log("FILTER: ", filter)
-    console.log("FILTER LENGTH: ", filter.length)
   }
 
   goToArtist(id: number) {

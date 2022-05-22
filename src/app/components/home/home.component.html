@@ -32,7 +32,7 @@
         [rowHeight]="isMobile ? '2:1' : (isTablet ? '2:1' : '5:6')" gutterSize="2rem"
         *ngIf="artistList.length && !loading">
         <mat-grid-tile *ngFor="let art of artistList" (click)="goToArtist(art.artist.id)">
-            <mat-card class="testing">
+            <mat-card class="artist-div">
                 <mat-card-content>
                     <img [src]="art.artist.picture_medium" />
                     <!-- <h2 class="subtitle-test">My Innovations</h2> -->
