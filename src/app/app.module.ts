@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { SharedModule } from './shared/shared.module';
 import { ArtistComponent } from './components/home/artist/artist.component';
 
@@ -14,7 +13,6 @@ import { ArtistComponent } from './components/home/artist/artist.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    NavigationComponent,
     ArtistComponent
   ],
   imports: [
