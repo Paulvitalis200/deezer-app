@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.deezer.com'
+  apiBaseUrl: 'https://paulvitalis200.github.io/deezer-app/api'
 };
