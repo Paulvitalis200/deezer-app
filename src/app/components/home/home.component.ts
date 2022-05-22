@@ -38,7 +38,14 @@ export class HomeComponent implements OnInit {
     this.artistsService.getArtists(this.artist).subscribe((res: any) => {
       console.log("RES: ", res)
       this.loading = false
+      let unfilteredData = res.data
+      let uniqueChars = unfilteredData.filter((artist: any, index: any) => {
+        return unfilteredData.indexOf(artist.artist.name.toLowerCase()) === index;
+      });
+      console.log("UNIQUE: ", uniqueChars)
       this.artistList = res.data
+      // this.artistList = unfilteredData.filter((artist: any) => artist.artist.name.toLowerCase() === this.artist)
+      // unfilteredData.findIndex((artist))
       this.totalResults = res.total
       // if (res.total === 0) {
       //   this.totalResults
