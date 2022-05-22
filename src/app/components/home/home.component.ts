@@ -1,6 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ArtistsService } from 'src/app/core/services/artists/artists.service';
+import { ArtistComponent } from './artist/artist.component';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,7 @@ export class HomeComponent implements OnInit {
   artistsFound: boolean = false;
   totalResults!: number;
   filterLength: number = 0;
-  constructor(private artistsService: ArtistsService, breakpointObserver: BreakpointObserver) {
+  constructor(private artistsService: ArtistsService, breakpointObserver: BreakpointObserver, private router: Router) {
     breakpointObserver.observe([Breakpoints.Handset]).subscribe((result) => {
       this.isMobile = result.matches;
     });
@@ -66,6 +68,10 @@ export class HomeComponent implements OnInit {
 
     console.log("FILTER: ", filter)
     console.log("FILTER LENGTH: ", filter.length)
+  }
+
+  goToArtist(id: number) {
+    this.router.navigateByUrl(`/artist-name/${id}`)
   }
 
 }

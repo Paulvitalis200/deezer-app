@@ -12,4 +12,8 @@ export class ArtistsService {
   getArtists(artistName: string) {
     return this.http.get(`${environment.apiBaseUrl}/search?q=artist:"${artistName}"`)
   }
+
+  getArtist(id: number) {
+    return this.http.get(`${environment.apiBaseUrl}/artist/${id}`)
+  }
 }
