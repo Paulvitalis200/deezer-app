@@ -10,6 +10,6 @@ export class ArtistsService {
   constructor(private http: HttpClient) { }
 
   getArtists(artistName: string) {
-    return this.http.get(`${environment.apiBaseUrl}/search?q=${artistName}`)
+    return this.http.get(`${environment.apiBaseUrl}/search?q=artist:"${artistName}"`)
   }
 }

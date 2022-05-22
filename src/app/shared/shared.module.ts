@@ -11,7 +11,9 @@ import {
     faCircleUser,
     faEnvelope,
     faEnvelopeCircleCheck,
-    faSearch
+    faSearch,
+    faMusic,
+    faFaceFrown
 } from '@fortawesome/free-solid-svg-icons';
 
 import { faBell, faMessage } from '@fortawesome/free-regular-svg-icons';
@@ -120,7 +122,9 @@ export class SharedModule {
             faMessage,
             faEnvelope,
             faEnvelopeCircleCheck,
-            faSearch
+            faSearch,
+            faMusic,
+            faFaceFrown
         );
     }
 }

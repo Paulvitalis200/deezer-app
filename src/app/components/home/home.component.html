@@ -7,6 +7,33 @@
             <input matInput (input)="applyFilter($event)">
         </mat-form-field>
     </div>
+    <div class="icon-div" *ngIf="!artistList.length && !loading && filterLength === 0">
+
+        <fa-icon [icon]="['fas', 'music']" style="font-size: 10em; color: white">
+        </fa-icon>
+        <p class="search-text">
+            Search for an artist
+        </p>
+    </div>
+    <div class="icon-div" *ngIf="totalResults === 0 && !loading && artistsFound">
+
+        <fa-icon [icon]="['fas', 'face-frown']" style="font-size: 10em; color: white">
+        </fa-icon>
+        <p class="search-text">
+            No artists found
+        </p>
+    </div>
+
+    <div *ngIf="loading" class="spinner-div">
+        <mat-spinner></mat-spinner>
+        <p class="load-text">Loading artists</p>
+    </div>
+    <mat-grid-list cols="2" rowHeight="2:1" *ngIf="artistList.length && !loading">
+        <mat-grid-tile>1</mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+        <mat-grid-tile>4</mat-grid-tile>
+    </mat-grid-list>
 
     <!-- </mat-form-field> -->
 

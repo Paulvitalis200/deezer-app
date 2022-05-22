@@ -34,3 +34,31 @@
 ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0 0 0.5em 0;
 }
+
+.icon-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+
+    .search-text {
+        color: white;
+        margin-top: 10px;
+        font-size: 1.5em;
+    }
+}
+
+.spinner-div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20em 0;
+
+    .load-text {
+        color: white;
+        margin-top: 1.3em;
+        font-size: 1.4em;
+    }
+}
